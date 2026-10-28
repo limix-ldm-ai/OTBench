@@ -1,0 +1,4 @@
+# SMOTE-NC (Chawla et al. 2002, section 6.1): interpolate numerical features,
+# take the neighbourhood majority for categorical ones.
+[model]
+k_neighbors = 5

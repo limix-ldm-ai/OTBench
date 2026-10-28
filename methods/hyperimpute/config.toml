@@ -1,0 +1,24 @@
+# HyperImpute (Jarrett et al. 2022). Defaults follow the upstream plugin.
+#
+# The inner model search runs on each incomplete evaluation setting because the
+# official plugin is transductive. select_lazy and optimize_thresh are upstream's
+# own cost controls; lowering n_inner_iter is the usual smoke knob.
+
+[model]
+# Upstream's own search space. Entries that cannot be constructed against the
+# installed scikit-learn are dropped at fit time and recorded in the checkpoint
+# metadata as `excluded_models` -- never dropped silently.
+classifier_seed = ["random_forest", "logistic_regression", "xgboost", "catboost", "neural_nets"]
+regression_seed = ["random_forest_regressor", "linear_regression", "xgboost_regressor",
+                   "catboost_regressor", "neural_nets_regression"]
+
+n_inner_iter = 10
+select_model_by_column = true
+select_model_by_iteration = true
+# Kept enabled. The adapter repairs XGBoost's stale multiclass objective when a
+# lazily reused estimator is refitted on a binary column.
+select_lazy = true
+optimize_thresh = 1000
+baseline_imputer = 0
+
+[impute]

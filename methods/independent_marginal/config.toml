@@ -1,0 +1,3 @@
+# Diagnostic baseline: each column sampled independently from its train marginal.
+# No parameters -- the empirical marginal is stored verbatim.
+[model]

@@ -1,0 +1,33 @@
+# TabImpute — parameter definition.
+#
+# Pretrained zero-shot imputer (training-free). The checkpoint is resolved from
+# checkpoints/tabimpute/pretrained/ by default; an absolute path in [model] or
+# TABIMPUTE_MODEL_PATH overrides it. Auto-download is never attempted: upstream
+# would pull the weights from the HF hub on first use, which makes a run depend
+# on network state.
+#
+# The package metadata pins a TabPFN major version incompatible with the 2.1.2
+# pinned elsewhere, but the V2 path below never imports tabpfn, so it installs
+# with --no-deps into the same environment as everything else. See
+# requirements/imputation.txt.
+
+[model]
+model_ckpt = "tabimputev2.ckpt"
+verbose = false
+
+[impute]
+trials = 1
+# Clean train rows prepended to the matrix as in-context support. V2 attends
+# over the whole matrix in one pass, so this is the real memory knob; upstream's
+# own max_num_rows is rejected by V2.
+max_context_rows = 2048
+# A fixed test batch keeps execution reproducible across GPUs. With 100 encoded
+# columns and 5k bars, 256 rows plus the context fits the benchmark GPUs.
+max_test_rows_per_batch = 256
+# Secondary input-matrix bound, applied to one context+test chunk.
+max_encoded_cells = 750000
+# Capacity guard for the much larger bar-distribution tensor.
+bar_distribution_bins = 5000
+distribution_workspace_factor = 3.0
+max_estimated_gib = 16.0
+train_seed = 0

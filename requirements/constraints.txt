@@ -1,0 +1,13 @@
+# Benchmark dependency constraints. Pass -c requirements/constraints.txt when installing.
+# scikit-learn 1.6.1 preserves APIs required by TabPFN 2.1.2 and HyperImpute.
+# transformers/huggingface-hub preserve compatibility with TabPFN and be-great.
+# pyarrow 20 retains the PyExtensionType API used by be-great's datasets dependency.
+
+numpy==1.26.4
+scipy==1.15.2
+scikit-learn==1.6.1
+pandas==2.3.3
+torch==2.9.1
+transformers==4.57.1
+huggingface-hub==0.36.2
+pyarrow==20.0.0

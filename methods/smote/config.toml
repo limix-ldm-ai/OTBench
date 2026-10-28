@@ -1,0 +1,5 @@
+# SMOTE — parameter definition (imblearn defaults via the original wrapper).
+# Training-free: fit happens at sample time.
+
+[model]
+k_neighbors = 5

@@ -1,0 +1,9 @@
+# ARF — parameter definition (defaults from arfpy via the original wrapper).
+
+[model]
+num_trees = 30
+min_node_size = 5
+
+[train]
+max_iters = 10
+early_stop = true

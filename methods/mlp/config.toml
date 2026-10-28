@@ -1,0 +1,14 @@
+# MLP (scikit-learn). Early stopping uses scikit-learn's internal validation
+# fraction, taken from the train rows this adapter passes it.
+
+[model]
+hidden_layer_sizes = [256, 128]
+activation = "relu"
+alpha = 1e-4
+learning_rate_init = 1e-3
+batch_size = "auto"
+
+[train]
+max_iter = 500
+early_stopping = true
+n_iter_no_change = 20

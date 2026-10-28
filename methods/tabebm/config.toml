@@ -1,0 +1,16 @@
+# TabEBM — parameter definition (defaults from the original wrapper; SGLD
+# sampling on a TabPFN-backed class-conditional energy model). Training-free.
+
+[model]
+sgld_steps = 200
+sgld_step_size = 0.1
+sgld_noise_std = 0.01
+max_data_size = 10000
+# Reject genuinely unbounded one-hot representations before constructing
+# TabPFN. Amazon_employee_access is 14,440 wide and is deliberately supported.
+max_onehot_features = 20000
+# Width-aware deterministic caps. On Amazon these become 69 context rows and
+# 69 SGLD chains per forward before any adaptive OOM retry.
+max_context_cells = 1000000
+max_sgld_batch_cells = 1000000
+min_chunk_size = 1

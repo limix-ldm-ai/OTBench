@@ -1,0 +1,10 @@
+# MICE (van Buuren & Groothuis-Oudshoorn 2011). Each of the K chains samples
+# from the conditional predictive distribution; categorical columns use a
+# classifier, never a rounded regression.
+
+[model]
+n_iterations = 10
+
+[impute]
+# K completions. Rubin's rules and the interval metrics need K >= 2.
+trials = 5

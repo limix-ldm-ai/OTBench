@@ -1,0 +1,48 @@
+# TabPFN-3 + tabpfn-extensions unsupervised adapter.
+#
+# Obtain the two pretrained files separately and place them in
+# checkpoints/tabpfn_unsupervised/pretrained/, or set the corresponding
+# TABPFN_UNSUPERVISED_*_MODEL_PATH variables. Preserve upstream filenames:
+# TabPFN resolves the model architecture (V2/V3) from the filename.
+
+[model]
+classifier_ckpt = "tabpfn-v3-classifier-v3_default.ckpt"
+regressor_ckpt = "tabpfn-v3-regressor-v3_default.ckpt"
+# The upstream V3 default classifier reports this limit from its embedded
+# inference config. The adapter refuses categorical *targets* above the limit
+# instead of silently routing them through a continuous regressor.
+max_classes = 160
+# The reference/context set is sampled deterministically when a table is larger.
+max_train_rows = 50000
+
+[model.estimator_kwargs]
+# G refits a TabPFN head once per generated column and permutation. The
+# imputation grid runner fits once per artificially masked column and reuses it
+# across every missingness setting and draw.
+# One estimator is the practical default; increase explicitly for a quality/cost
+# study, e.g. --override model.estimator_kwargs.n_estimators=4.
+n_estimators = 1
+ignore_pretraining_limits = true
+show_progress_bar = false
+
+[sample]
+temperature = 1.0
+n_permutations = 1
+
+[impute]
+trials = 3
+temperature = 1e-9
+# The supervised target is an observed conditioning variable for feature
+# imputation. Set to "feature_only" only for a separately reported target-hidden
+# protocol; the two contracts must never be pooled.
+target_access = "target_observed"
+# One common schema-order pass is required by the one-fit-per-column contract.
+n_permutations = 1
+# Cache the train representation during that single fit. Offloading the cache
+# avoids retaining a large per-column KV cache on the GPU between batches.
+fit_mode = "fit_with_cache"
+keep_cache_on_device = false
+predict_batch_size = 4096
+
+[predict]
+trials = 1

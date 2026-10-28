@@ -1,0 +1,6 @@
+# SCM — parameter definition (defaults from the original wrapper).
+
+[model]
+cd_method = "direct-lingam"    # causal-discovery backend: direct-lingam | lim
+
+[train]

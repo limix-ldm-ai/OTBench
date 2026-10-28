@@ -1,0 +1,18 @@
+# FT-Transformer (Gorishniy et al. 2021).
+#
+# The architecture uses the upstream default for the chosen depth
+# (`FTTransformer.get_default_kwargs(n_blocks)`); only depth and optimisation
+# are exposed here, so a run stays comparable with the published setup.
+
+[model]
+n_blocks = 3
+
+[train]
+epochs = 100
+patience = 16
+batch_size = 256
+learning_rate = 1e-4
+weight_decay = 1e-5
+
+[predict]
+batch_size = 1024

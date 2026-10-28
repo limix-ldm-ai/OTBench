@@ -1,0 +1,4 @@
+# Rebuild the OpenML parquet and supported SCM stores.
+# Install with -c requirements/constraints.txt.
+pyarrow
+pgmpy

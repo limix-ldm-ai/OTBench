@@ -1,0 +1,35 @@
+# TabSyn — parameter definition (unified sections).
+#
+# Value provenance: hardcoded defaults of the original tabsyn repo
+# (tabsyn/vae/main.py: LR/WD/D_TOKEN/N_HEAD/FACTOR/NUM_LAYERS, epochs=4000,
+# beta annealing 1e-2 -> 1e-5 with decay 0.7; tabsyn/main.py: MLPDiffusion
+# dim_t=1024, epochs=10000+1, Adam lr=1e-3, early stop patience 500;
+# sampling/imputation: 50 EDM steps, 20 RePaint resampling rounds).
+
+[model]
+num_layers = 2      # VAE transformer depth
+d_token = 4         # latent token width
+n_head = 1
+factor = 32
+dim_t = 1024        # latent diffusion MLP width
+
+[train]
+batch_size = 4096
+vae_epochs = 4000
+vae_lr = 1e-3
+vae_wd = 0.0
+max_beta = 1e-2
+min_beta = 1e-5
+lambd = 0.7
+diff_epochs = 10001
+diff_lr = 1e-3
+diff_wd = 0.0
+early_stop_patience = 500
+
+[sample]
+num_steps = 50      # EDM sampler steps
+
+[impute]
+trials = 5
+num_steps = 50
+resample_rounds = 20

@@ -1,0 +1,42 @@
+# LimiX-2 (architecture v2.0, 400M) generation + imputation + prediction adapter.
+#
+# Inference code is vendored under methods/limix2/model. Obtain weights
+# separately in checkpoints/limix2/pretrained/ or set LIMIX2_MODEL_PATH.
+# The adapter never downloads weights.
+
+[model]
+model_ckpt = "LimiX-2.ckpt"
+source_root = "model"
+classification_config = "config/cls_default_noretrieval_v2.json"
+regression_config = "config/reg_default_noretrieval_v2.json"
+imputation_config = "config/reg_default_noretrieval_MVI_v2.json"
+max_train_rows = 50000
+
+[model.predictor_kwargs]
+mix_precision = true
+use_data_cache = false
+deterministic = false
+enable_preprocess_parallel = true
+preprocess_num_jobs = 8
+
+[sample]
+# Every variable is sampled conditionally in a deterministic seeded order.
+# Categorical targets with 2--10 train levels use classification.  Targets
+# with >10 levels are intentionally represented by ordinal numbers and use the
+# regression bucket distribution; they are rounded/clipped only at decode.
+column_order = "seeded"
+classification_temperature = 1.0
+regression_temperature = 1.0
+
+[impute]
+trials = 1
+# Native Feature_imputation is a point reconstruction.  The supervised target
+# is retained as an observed conditioning variable for this benchmark track.
+target_access = "target_observed"
+
+[predict]
+trials = 1
+# The official classification default is calibrated at 0.9. Regression is a
+# point expectation; temperature 1.0 leaves the native bucket mass unchanged.
+classification_temperature = 0.9
+regression_temperature = 1.0

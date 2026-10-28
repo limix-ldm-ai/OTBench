@@ -1,0 +1,27 @@
+# Generation backends and vendored synth core.
+# Install with: python -m pip install -c requirements/constraints.txt -r requirements/generation.txt
+# TabEBM additionally needs requirements/foundation.txt (TabPFN 2.1.2).
+# DGL uses torchdata 0.9 and the narrow GraphBolt compatibility gate in methods/goggle/.
+
+torch
+cloudpickle
+loguru
+redis
+optuna
+torchvision
+xgboost
+opacus
+wrapt_timeout_decorator
+rtdl_revisiting_models==0.0.2
+pydantic>=2
+imbalanced-learn
+arfpy
+nflows
+fflows
+nrgboost
+causal-learn
+lingam
+be-great==0.0.14
+dgl==2.1.0
+torchdata==0.9.0
+torch-geometric==2.8.0.post1

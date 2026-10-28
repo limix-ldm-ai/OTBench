@@ -1,0 +1,13 @@
+# NGBoost (Duan et al. 2020). Regression only; the predictive distribution is
+# read off pred_dist (sample / logpdf / ppf), never approximated.
+
+[model]
+distribution = "normal"
+n_estimators = 500
+learning_rate = 0.01
+minibatch_frac = 1.0
+
+[train]
+early_stopping_rounds = 50
+
+[predict]

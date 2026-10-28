@@ -1,0 +1,6 @@
+# Random forest (Breiman 2001; scikit-learn defaults except n_estimators).
+
+[model]
+n_estimators = 300
+min_samples_leaf = 1
+n_jobs = -1

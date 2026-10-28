@@ -1,0 +1,12 @@
+# Foundation-model inference dependencies. Checkpoints are supplied separately.
+# Install a compatible PyTorch/CUDA build constrained by requirements/constraints.txt first.
+# Install with: python -m pip install -c requirements/constraints.txt -r requirements/foundation.txt
+# TabPFN 2.1.2 is part of the method definition and is also used by TabEBM.
+# Export SCIPY_ARRAY_API=1 before importing SciPy if SciPy precedes OTBench.
+# LimiX-2's optional isolated package has its own pyproject.toml and constraints.txt.
+
+tabicl
+kditransform
+einops
+pydantic_settings
+tabpfn==2.1.2

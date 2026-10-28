@@ -1,0 +1,12 @@
+# Gaussian copula with empirical marginals. One joint checkpoint serves
+# generation, imputation and prediction through the closed-form conditional.
+
+[model]
+# Cap on stored order statistics per numerical marginal (keeps the checkpoint
+# from scaling with the training set; the inverse CDF interpolates anyway).
+max_quantiles = 1000
+
+[predict]
+# Monte Carlo budget for the conditional predictive distribution.
+n_samples = 100
+n_class_samples = 200

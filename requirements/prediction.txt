@@ -1,0 +1,11 @@
+# Traditional, neural, and probabilistic prediction backends.
+# Install with: python -m pip install -c requirements/constraints.txt -r requirements/prediction.txt
+# CARD is vendored and requires PyTorch and scikit-learn.
+
+xgboost
+lightgbm==4.7.0
+catboost
+ngboost==0.5.11
+rtdl_revisiting_models==0.0.2
+tabm==0.0.3
+imbalanced-learn

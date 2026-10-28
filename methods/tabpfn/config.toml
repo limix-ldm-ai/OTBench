@@ -1,0 +1,21 @@
+# TabPFN — parameter definition.
+#
+# Pretrained foundation model (training-free). Checkpoints are resolved from
+# checkpoints/tabpfn/pretrained/ by default; absolute paths in [model] or the
+# TABPFN_*_MODEL_PATH environment variables override.
+
+[model]
+regressor_ckpt = "tabpfn-v2-regressor.ckpt"
+classifier_ckpt = "tabpfn-v2-classifier-finetuned-zk73skhh.ckpt"
+# extra constructor kwargs for TabPFNRegressor/TabPFNClassifier:
+[model.estimator_kwargs]
+# datasets in the store exceed TabPFN's official 10k-row pretraining limit;
+# max_train_rows (below) still caps the in-context train set at 50k rows.
+ignore_pretraining_limits = true
+
+[impute]
+trials = 1
+iterations = 1
+max_train_rows = 50000
+predict_batch_size = 4096
+train_seed = 0

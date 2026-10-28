@@ -1,0 +1,11 @@
+# CatBoost (Prokhorenkova et al. 2018). Categorical columns are passed through
+# raw so the ordered target statistics -- the reason to use CatBoost -- apply.
+
+[model]
+iterations = 500
+learning_rate = 0.05
+depth = 6
+l2_leaf_reg = 3.0
+
+[train]
+early_stopping_rounds = 50

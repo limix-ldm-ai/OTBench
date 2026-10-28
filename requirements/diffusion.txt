@@ -1,0 +1,9 @@
+# Vendored TabDDPM, TabSyn, and TabDiff dependencies.
+# Install a compatible PyTorch/CUDA build constrained by requirements/constraints.txt first.
+# Install with: python -m pip install -c requirements/constraints.txt -r requirements/diffusion.txt
+
+category_encoders
+tomli
+tomli_w
+prdc
+seaborn

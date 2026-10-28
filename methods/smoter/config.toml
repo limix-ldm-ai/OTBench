@@ -1,0 +1,3 @@
+# SMOTER (Torgo et al. 2013): features AND target interpolated by the same weight.
+[model]
+k_neighbors = 5

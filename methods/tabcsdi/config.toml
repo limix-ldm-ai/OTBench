@@ -1,0 +1,33 @@
+# TabCSDI (Zheng & Charoenphakdee, NeurIPS 2022 TRL workshop)
+# https://github.com/pfnet-research/TabCSDI
+#
+# Values follow config/census_onehot_analog.yaml. Two deliberate departures:
+#   channels   128 -> 64    the census config sizes the residual stack for a
+#                           39-column frame; 64 keeps it trainable on the small
+#                           tables in this benchmark. Raise it back for large ones.
+#   num_steps  100 -> 50    sampling cost is linear in this and quadratic in the
+#                           draw count; 50 is upstream's value in the numerical
+#                           (breast) configs.
+
+[train]
+epochs = 250
+batch_size = 64
+lr = 5e-4
+
+[diffusion]
+layers = 4
+channels = 64
+nheads = 4
+embedding_dim = 128
+beta_start = 1e-4
+beta_end = 0.5
+num_steps = 50
+schedule = "quad"            # "quad" or "linear"
+
+[model]
+time_embedding_dim = 128
+feature_embedding_dim = 8
+
+[impute]
+batch_size = 64
+trials = 5                   # native joint draws per mask, for the K-draw metrics

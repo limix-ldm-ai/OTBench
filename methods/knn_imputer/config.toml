@@ -1,0 +1,4 @@
+# kNN imputation. Neighbours always come from the train reference set, so the
+# method stays inductive and comparable with the model-based imputers.
+[model]
+n_neighbors = 5

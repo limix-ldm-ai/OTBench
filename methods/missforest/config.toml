@@ -1,0 +1,7 @@
+# MissForest (Stekhoven & Buhlmann 2012). Deterministic conditional mean/mode,
+# so it declares point output only and the K-draw metrics skip for it.
+
+[model]
+max_iterations = 10
+n_estimators = 100
+tolerance = 1e-3

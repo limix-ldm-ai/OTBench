@@ -1,0 +1,38 @@
+# Forest-VP (ForestDiffusion, diffusion_type fixed to 'vp').
+#
+# duplicate_K is the dominant cost knob: upstream replicates the dataset K times
+# with different noise levels, so fit time and memory scale linearly with it.
+# 100 is the paper's default and is kept here; the smoke configs override it.
+
+[model]
+n_t = 50
+duplicate_K = 100
+n_estimators = 100
+max_depth = 7
+eta = 0.3
+# ForestDiffusion 1.0.6 selects XGBoost's CUDA backend through gpu_hist=True.
+# With XGBoost 3.x the tree method remains "hist" ("gpu_hist" is no longer a
+# valid tree_method value). Set gpu_hist=false explicitly for a CPU run.
+tree_method = "hist"
+gpu_hist = true
+# Each rank is already a unit of parallel work.  Letting every ForestDiffusion
+# fit expand to all host CPUs multiplies both process count and the duplicated
+# training matrix, and caused cgroup OOM kills in the 8-rank scheduler.
+n_jobs = 1
+# Bound the host threads used by each individual XGBoost booster. This matters
+# because a scheduler node launches several independent GPU ranks.
+xgboost_nthread = 1
+
+[impute]
+# REPAINT resampling (Lugmayr et al. 2022), which upstream uses for imputation.
+repaint = true
+repaint_r = 5
+repaint_j = 0.1
+# Bound the full intermediate matrix used by upstream impute().
+batch_rows = 256
+
+[generate]
+# Upstream allocates the requested batch in one call.
+batch_rows = 1024
+
+[train]

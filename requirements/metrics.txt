@@ -1,0 +1,4 @@
+# Optional SDMetrics parity and SCM conditional-independence tests/metrics.
+# Install with -c requirements/constraints.txt.
+sdmetrics
+pgmpy

@@ -1,0 +1,15 @@
+# CTGAN parameters for the generator plugin.
+
+[model]
+generator_n_layers_hidden = 2
+generator_n_units_hidden = 500
+generator_nonlin = "relu"
+discriminator_n_layers_hidden = 2
+discriminator_n_units_hidden = 500
+discriminator_nonlin = "leaky_relu"
+
+[train]
+n_iter = 100
+discriminator_n_iter = 1
+lr = 1e-3
+weight_decay = 1e-3

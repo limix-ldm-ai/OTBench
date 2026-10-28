@@ -1,0 +1,32 @@
+# TabICL v2 + the upstream TabICLUnsupervised extension.
+#
+# Obtain the pretrained files separately and place them in
+# checkpoints/tabicl/pretrained/, or set TABICL_*_MODEL_PATH.
+# Auto-download is disabled by the adapter.
+
+[model]
+regressor_ckpt = "tabicl-regressor-v2-20260212.ckpt"
+classifier_ckpt = "tabicl-classifier-v2-20260212.ckpt"
+max_train_rows = 50000
+n_estimators = 8
+batch_size = 8
+max_categories = 10
+
+[model.estimator_kwargs]
+# Explicit categorical schema columns use TabICL's many-class path.  The
+# max_categories value above is only an auto-detection guard.
+support_many_classes = true
+
+[sample]
+temperature = 1.0
+
+[impute]
+trials = 3
+temperature = 1.0
+iterations = 2
+# The observed supervised target is a conditioning variable for feature
+# imputation.  Use feature_only only for a separately reported protocol.
+target_access = "target_observed"
+
+[predict]
+trials = 1

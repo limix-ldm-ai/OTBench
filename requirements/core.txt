@@ -1,0 +1,8 @@
+# Core dependencies also supply the project's install metadata.
+# Use -c requirements/constraints.txt for the validated numerical stack.
+numpy
+pandas
+scikit-learn
+scipy
+tqdm
+pyyaml

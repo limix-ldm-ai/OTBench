@@ -1,0 +1,19 @@
+# LimiX — parameter definition.
+#
+# Pretrained foundation model (training-free); vendored inference code under
+# methods/limix/model. Checkpoint resolved from checkpoints/limix/pretrained/
+# by default; [model].model_ckpt (absolute) or LIMIX_MODEL_PATH override.
+# The regression inference config drops the 'power' preprocessing worker to
+# avoid overflows on sparse/near-constant features.
+
+[model]
+model_ckpt = "LimiX-16M.ckpt"
+# inference_config = "/abs/path/to/config.json"   # optional override
+[model.estimator_kwargs]
+
+[impute]
+trials = 1
+iterations = 1
+max_train_rows = 50000
+predict_batch_size = 4096
+train_seed = 0

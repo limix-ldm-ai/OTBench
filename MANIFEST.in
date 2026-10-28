@@ -1,0 +1,10 @@
+include README.md CONTRIBUTING.md CITATION.cff LICENSE.txt NOTICE.md pytest.ini .gitignore
+recursive-include methods LICENSE* NOTICE* VENDOR.md constraints.txt
+recursive-include requirements *.txt
+recursive-include tests *.py
+recursive-include docs *.md *.json
+recursive-include .github *.yml *.yaml
+recursive-exclude * __pycache__ *.py[cod]
+recursive-exclude methods/card/model *
+recursive-exclude methods/remasker/model *
+include methods/card/model/README.md methods/remasker/model/README.md

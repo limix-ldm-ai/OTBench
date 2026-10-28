@@ -1,0 +1,8 @@
+# BN — parameter definition (defaults from the original synthcity plugin).
+
+[model]
+struct_learning_search_method = "tree_search"
+
+[train]
+struct_learning_n_iter = 1000
+struct_learning_score = "k2"

@@ -1,0 +1,3 @@
+# Unconditional column statistics. Mean or median (set by the registry name)
+# for numerical columns, mode for categorical.
+[model]

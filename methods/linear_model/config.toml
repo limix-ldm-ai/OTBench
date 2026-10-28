@@ -1,0 +1,8 @@
+# Linear baselines (scikit-learn). Two registry names share this file's schema
+# but each loads its own copy; `alpha` applies to linear_regression (Ridge) and
+# `C` to logistic_regression.
+
+[model]
+alpha = 1.0
+C = 1.0
+max_iter = 1000

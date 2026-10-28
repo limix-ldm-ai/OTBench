@@ -1,0 +1,9 @@
+datasets:
+- name: breast_cancer
+  dataset_type: real
+  task_type: classification
+  source: sklearn
+  source_id: load_breast_cancer
+  target_col: target
+  n_features: 30
+  notes: OFFLINE DEMO (sklearn), not part of the paper cohort.

@@ -1,0 +1,25 @@
+# TabM (Gorishniy et al. 2025). Defaults follow the paper's reference setup.
+#
+# k is the ensemble size. Its outputs are member predictions, not samples from
+# p(y|x), so no sample-based metric is computed from them.
+
+[model]
+arch_type = "tabm"
+# 'random-signs' pairs with a model that has no numerical embeddings, which is
+# the configuration here. Switch to 'normal' only alongside piecewise-linear
+# embeddings, as upstream specifies.
+start_scaling_init = "random-signs"
+k = 32
+n_blocks = 3
+d_block = 512
+dropout = 0.1
+
+[train]
+epochs = 100
+patience = 16
+batch_size = 256
+learning_rate = 2e-3
+weight_decay = 0.0
+
+[predict]
+batch_size = 1024

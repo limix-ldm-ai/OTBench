@@ -1,0 +1,7 @@
+# Isolated TabPFN-3 environment; do not combine with the TabPFN 2.1.2 foundation layer.
+# Install the benchmark's other dependencies in a separate environment, then:
+#   python -m pip install -c requirements/constraints.txt -r requirements/tabpfn_unsupervised.txt
+# The exact pair preserves the original model API and defaults.
+
+tabpfn==8.4.0
+tabpfn-extensions==0.6.2

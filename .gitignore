@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+work/
+outputs/
+checkpoints/
+tabdata/store/
+tabdata/raw/
+
+# Locally acquired upstream source has no redistribution grant in this release.
+methods/card/model/*
+!methods/card/model/README.md
+methods/remasker/model/*
+!methods/remasker/model/README.md

@@ -1,0 +1,16 @@
+# GOGGLE — parameter definition (defaults from the original synthcity plugin).
+
+[model]
+encoder_dim = 64
+encoder_l = 2
+decoder_dim = 64
+decoder_arch = "gcn"
+
+[train]
+n_iter = 50
+learning_rate = 5e-3
+weight_decay = 1e-3
+alpha = 0.1
+beta = 0.1
+iter_opt = true
+threshold = 0.1

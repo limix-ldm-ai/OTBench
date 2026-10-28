@@ -1,0 +1,17 @@
+# TabICL — parameter definition.
+#
+# Pretrained foundation model (training-free). Checkpoints resolved from
+# checkpoints/tabicl/pretrained/ by default; absolute paths in [model] or the
+# TABICL_*_MODEL_PATH environment variables override. Auto-download stays off.
+
+[model]
+regressor_ckpt = "tabicl-regressor-v2-20260212.ckpt"
+classifier_ckpt = "tabicl-classifier-v2-20260212.ckpt"
+[model.estimator_kwargs]
+
+[impute]
+trials = 1
+iterations = 1
+max_train_rows = 50000
+predict_batch_size = 4096
+train_seed = 0

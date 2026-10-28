@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use OTBench, cite this software record. Paper and contributor metadata await maintainer confirmation."
+type: software
+title: "OTBench: Tabular generation, imputation, and prediction benchmark"
+version: 0.2.0
+authors:
+  - name: "OTBench contributors"

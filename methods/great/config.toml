@@ -1,0 +1,21 @@
+# GReaT — defaults mapped to the be-great 0.0.14 public API.
+# Obtain a distilgpt2 snapshot separately and place it in
+# checkpoints/great/pretrained/distilgpt2, or set model.llm to its local path.
+# Remote Hub ids are not resolved by the benchmark.
+
+[model]
+# llm = "/abs/path/to/hf_model"
+
+[train]
+n_iter = 5
+
+[impute]
+temperature = 0.7
+batch_size = 100
+# Total prompt and generated sequence length bound.
+max_length = 1000
+max_retries = 15
+
+[predict]
+
+[generate]

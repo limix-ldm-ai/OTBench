@@ -1,0 +1,27 @@
+# DiffPuter (Zhang et al., ICLR 2025) — https://github.com/hengruizhang98/DiffPuter
+#
+# Defaults are main.py's. They are expensive on purpose: em_iterations x
+# max_epochs diffusion trainings, plus num_trials RePaint trajectories per
+# E-step, each of which is num_steps x 20 network evaluations. Budget for it, or
+# lower em_iterations and max_epochs and say so alongside the numbers.
+#
+# em_iterations = 1 is upstream's out-of-sample branch and is inductive; any
+# larger value engages the EM and makes the method transductive.
+
+[model]
+hid_dim = 1024
+
+[train]
+max_epochs = 10000
+patience = 500               # epochs without a training-loss improvement
+batch_size = 4096
+lr = 1e-4
+
+[em]
+em_iterations = 10           # main.py --max_iter
+num_trials = 20              # main.py --num_trials, averaged into the point estimate
+num_steps = 50               # main.py --num_steps
+warm_start = true            # reuse the previous round's weights for the next M-step
+
+[impute]
+trials = 5                   # native joint draws per mask, for the K-draw metrics

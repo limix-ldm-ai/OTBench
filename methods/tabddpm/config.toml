@@ -1,0 +1,37 @@
+# TabDDPM — parameter definition (unified sections).
+#
+# Value provenance: the official tab-ddpm repo trains class-conditionally
+# (is_y_cond=true) on classification datasets, which cannot impute/predict y.
+# OTBench trains ONE joint model per dataset (is_y_cond=false, y modelled
+# inside [y, x]) so a single checkpoint serves generation/imputation/prediction.
+# is_y_cond is therefore hard-coded in the adapter and NOT configurable here.
+# Defaults below follow the joint-modeling TabDDPM baseline configuration used
+# by the TabSyn repo (baselines/tabddpm/configs/*.toml, is_y_cond=false) and
+# tab-ddpm's CONFIG_DESCRIPTION.md template.
+# The official repo tunes steps/lr/d_layers per dataset; override as needed.
+
+[model]
+model_type = "mlp"              # 'mlp' | 'resnet' (denoiser backbone)
+d_layers = [1024, 2048, 2048, 1024]
+dropout = 0.0
+dim_t = 128
+num_timesteps = 1000
+gaussian_loss_type = "mse"
+scheduler = "cosine"
+
+[train]
+steps = 100000
+lr = 0.001
+weight_decay = 5e-4
+batch_size = 4096
+normalization = "quantile"      # tab-ddpm lib.Transformations normalization
+
+[sample]
+batch_size = 10000
+
+[impute]
+trials = 5                      # stochastic imputation/prediction repeats
+resample_rounds = 1             # RePaint inner resampling rounds
+impute_condition = "x_t"        # 'x_t' | 'x_0'
+w_num = 0.6                     # kept for interface parity with TabDiff
+w_cat = 0.6

@@ -1,0 +1,24 @@
+# Imputation backends beyond the sklearn baselines.
+# Install with: python -m pip install -c requirements/constraints.txt -r requirements/imputation.txt
+# Then explicitly install these packages without dependency resolution:
+#   python -m pip install -c requirements/constraints.txt --no-deps hyperimpute==0.1.17
+#   python -m pip install -c requirements/constraints.txt --no-deps tabimpute==0.0.4
+# HyperImpute's unused MIRACLE/dev dependencies are excluded. Its loguru pin may cause pip check warnings.
+# TabImpute V2 does not import the conflicting tabpfn==6.0.0 metadata requirement.
+# Its dependency mismatch remains visible to pip check and is an intentional isolated API choice.
+# Supply tabimputev2.ckpt in checkpoints/tabimpute/pretrained/ or set TABIMPUTE_MODEL_PATH.
+
+catboost
+lightgbm
+xgboost
+optuna
+loguru
+redis
+geomloss
+pydantic>=2
+cloudpickle
+ForestDiffusion==1.0.6
+timm
+einops
+huggingface-hub
+networkx

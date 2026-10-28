@@ -1,0 +1,4 @@
+# Diagnostic baseline: resampling of training rows. Not a privacy-preserving
+# generator; it exists to bound the fidelity and privacy metric scales.
+[model]
+with_replacement = true

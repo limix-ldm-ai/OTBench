@@ -1,0 +1,15 @@
+# TVAE parameters for the generator plugin.
+
+[model]
+encoder_n_layers_hidden = 3
+encoder_n_units_hidden = 500
+encoder_nonlin = "leaky_relu"
+n_units_embedding = 500
+decoder_n_layers_hidden = 3
+decoder_n_units_hidden = 500
+decoder_nonlin = "leaky_relu"
+
+[train]
+n_iter = 100
+lr = 1e-3
+weight_decay = 1e-5

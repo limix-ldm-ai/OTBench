@@ -1,0 +1,34 @@
+# Portable sharded benchmark configuration (Bash >= 4).
+# Run: bash scripts/run_sharded.sh --config scripts/sharded.example.toml
+# Command-line flags override keys; unknown keys are rejected.
+
+method = "tabpfn"
+task = "imputation"          # generation | imputation | prediction
+shards = 1                   # one dataset shard per selected GPU
+run_shards = "all"
+dataset_type = "all"         # real | scm | all; discover the materialized store
+gpus = [0]                   # replace with the allocated GPU identifiers
+max_workers = 1
+skip_existing = true         # provenance- and artifact-validated reuse
+# workspace = "/path/to/writable/workspace"  # default: OTBENCH_WORKSPACE or cwd
+# run_id = "prediction-seed0"                 # default: UTC timestamp + random suffix
+# store = "/path/to/dataset/store"
+# dry_run = true
+# extra = "--override train.steps=5000"
+
+# Generation uses seeds 0, 1, 2 by default; explicit seeds replace this range.
+# Use seeds or n_trials, not both.
+# n_trials = 3
+# metric = "all"
+
+# Imputation targets seeds 0, 1, 2; all four seeds are paired within each run.
+# scenarios = ["MCAR", "MAR", "MNAR", "MIXED_MCAR_MAR_MNAR"]
+# rates = [0.1, 0.3, 0.5]
+
+# Explicit seeds override the default generation/imputation seed range.
+# seeds = [0, 1, 2]
+
+# Prediction uses one checkpoint seed per invocation. Concurrent invocations
+# use independent run IDs; choose a distinct run_id for each explicit launch.
+# Alternatively use scripts/run_prediction_seeds.sh for unsharded runs.
+# train_seed = 0

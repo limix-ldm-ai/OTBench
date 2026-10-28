@@ -1,0 +1,15 @@
+# NRGBoost — parameter definition (defaults from the nrgboost package via the
+# original wrapper).
+
+[model]
+num_trees = 200
+shrinkage = 0.15
+max_leaves = 256
+
+[train]
+num_model_samples = 80000
+num_chains = 16
+burn_in = 100
+# Official NRGBoost is CPU/OpenMP-only. The node scheduler already runs several
+# independent shards, so one thread per shard avoids cgroup oversubscription.
+num_threads = 1
