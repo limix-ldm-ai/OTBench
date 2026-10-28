@@ -21,9 +21,10 @@ families have separate requirements and may need isolated environments.
 Install the published package without cloning the repository:
 
 ```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install otbench-tabular
+pip install otbench-tabular
+```
+
+```
 otbench --help
 otbench --list-methods
 ```
