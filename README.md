@@ -30,8 +30,8 @@ The `data` and `metrics` extras add dependencies for the supported OpenML parque
 SCM dataset builders and optional metrics, respectively:
 
 ```bash
-python -m pip install 'otbench-tabular[data]'
-python -m pip install 'otbench-tabular[metrics]'
+pip install 'otbench-tabular[data]'
+pip install 'otbench-tabular[metrics]'
 ```
 
 Datasets and pretrained weights are not included in the package. See the offline
