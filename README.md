@@ -24,11 +24,6 @@ Install the published package without cloning the repository:
 pip install otbench-tabular
 ```
 
-```
-otbench --help
-otbench --list-methods
-```
-
 The PyPI distribution is named `otbench-tabular`; the Python package and command
 are named `otbench`. You can also invoke the CLI with `python -m otbench`.
 The `data` and `metrics` extras add dependencies for the supported OpenML parquet /
@@ -50,9 +45,7 @@ with the repository's constraints:
 ```bash
 git clone https://github.com/Erisura/OTBench.git
 cd OTBench
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install -c requirements/constraints.txt -e '.[test]'
+pip install -c requirements/constraints.txt -e '.[test]'
 ```
 
 [Installation and weights](docs/installation.md) explains data dependencies,
@@ -97,16 +90,3 @@ instructions for obtaining the code directly from upstream for local use.
 `--workspace` selects the artifact workspace; otherwise `OTBENCH_WORKSPACE`, then
 the current directory, is used. Explicit `--store`, `--outputs`, and `--checkpoints`
 override their individual roots.
-
-## Validate
-
-```bash
-PYTHONDONTWRITEBYTECODE=1 python -m pytest -p no:cacheprovider \
-  -m 'not optional_backend and not optional_metric'
-```
-
-This runs core contracts without training optional model backends. To exercise
-installed backends and optional metric packages, run the full `tests/` suite.
-Missing optional packages or external weights skip; an installed backend with a
-broken import or API fails. Tests use synthetic fixtures; full training, dataset
-downloads, and multi-node deployment checks are separate work.
