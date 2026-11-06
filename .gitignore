@@ -1,5 +1,6 @@
 __pycache__/
 *.py[cod]
+.DS_Store
 .pytest_cache/
 .venv/
 *.egg-info/
@@ -16,3 +17,4 @@ methods/card/model/*
 !methods/card/model/README.md
 methods/remasker/model/*
 !methods/remasker/model/README.md
+

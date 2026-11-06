@@ -1,5 +1,9 @@
 # OTBench
 
+<p align="center">
+  <img src="./imgs/OTBench.jpg" width="90%">
+</p>
+
 OTBench evaluates tabular **generation, imputation, and prediction** through shared
 method, dataset, metric, and artifact contracts.
 
