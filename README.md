@@ -5,7 +5,7 @@
 </p>
 
 OTBench evaluates tabular **generation, imputation, and prediction** through shared
-method, dataset, metric, and artifact contracts.
+method, dataset, metric, and artifact contracts. For details, see our [paper](https://arxiv.org/pdf/2611.13001).
 
 The source includes runners, adapters, metrics, dataset manifests, and launchers.
 Datasets, pretrained weights, measured results, and paper analyses are supplied
@@ -94,3 +94,15 @@ instructions for obtaining the code directly from upstream for local use.
 `--workspace` selects the artifact workspace; otherwise `OTBENCH_WORKSPACE`, then
 the current directory, is used. Explicit `--store`, `--outputs`, and `--checkpoints`
 override their individual roots.
+
+## Citation
+
+```bibtex
+@misc{wang2026otbench,
+  title = {One Table, Many Queries: Benchmarking Generalist Tabular Models Across Generation, Imputation, and Prediction},
+  author = {Yuanrui Wang and Kaifang Li and Xuanyue Li and Ziyun Li and Yan Lu and Xingxuan Zhang and Peng Cui},
+  year = {2026},
+  eprint = {2611.13001},
+  archivePrefix = {arXiv}
+}
+```
